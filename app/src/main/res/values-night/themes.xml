@@ -1,16 +1,35 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Theme.InstagramUI" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/color_primary</item> <!--Tool bar, Button-->
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorOnPrimary">@color/white</item>
+
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/color_secondary</item> <!--Float Button, Check colors-->
+        <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
+        <item name="colorOnSecondary">@color/white</item>
+
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:statusBarColor" tools:ignore="DuplicateDefinition" tools:targetApi="m">@color/background_screen</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item> <!-- Light StatusBar API 23 (android 6)-->
+
+        <!-- Navigation Bar -->
+        <item name="android:navigationBarColor">@color/background_screen</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item> <!-- Light NavigationBar API 27 (android 8.1) -->
+
+        <item name="android:windowDisablePreview">true</item>
     </style>
+
+    <!-- Bottom Sheet Dialog Theme-->
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
 </resources>

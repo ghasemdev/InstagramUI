@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="color_primary">#1875ff</color>
+    <color name="color_primary_variant">#3CB4FF</color>
+    <color name="color_secondary">#14C1B6</color>
+    <color name="color_secondary_variant">#10C0B5</color>
+    <color name="color_error">#EE3048</color>
+
+    <!--Background-->
+    <color name="background_screen">#FFFFFF</color>
+    <color name="background_navigation_bar">#C6C6C6</color>
+    <color name="background_card">#FDFDFD</color>
+    <color name="background_search">#f2f2f2</color>
+    <color name="background_popup">#fcfcfc</color>
+    <color name="background_select">#1A18A3FE</color>
+    <color name="background_glass">#D6000000</color>
+
+    <!--Text-->
+    <color name="primary_text">#000000</color>
+    <color name="secondary_text">#1F2F48</color>
+    <color name="secondary_text_50">#801F2F48</color>
+    <color name="default_text">#8f96a2</color>
+
+    <!--Icon-->
+    <color name="icon_one">#0E0E0E</color>
+    <color name="icon_two">#FEFCFB</color>
+
+    <!--Divider-->
+    <color name="divider_one">#ECECEC</color>
+    <color name="divider_two">#a6a6a6</color>
+
+    <!--Indicator-->
+    <color name="tab_indicator_gray">#c0c0c0</color>
+
+    <!--SeekBar-->
+    <color name="progress_center">#11000000</color>
+    <color name="progress_start">#33000000</color>
+    <color name="progress_end">#11000000</color>
 </resources>

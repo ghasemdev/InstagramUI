@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#7D53C6</color>
+    <color name="color_primary_variant">#A57CED</color>
+    <color name="color_secondary">#14C1B6</color>
+    <color name="color_secondary_variant">#10C0B5</color>
+    <color name="color_error">#EE3048</color>
+
+    <!--Background-->
+    <color name="background_screen">#121212</color>
+    <color name="background_navigation_bar">#33333D</color>
+    <color name="background_card">#333333</color>
+    <color name="background_search">#1d1d1d</color>
+    <color name="background_popup">#1f1f1f</color>
+    <color name="background_select">#1A7D53C6</color>
+    <color name="background_glass">#D6CDCDCD</color>
+
+    <!--Text-->
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#FDFDFD</color>
+    <color name="secondary_text_50">#80FDFDFD</color>
+    <color name="default_text">#8f96a2</color>
+
+    <!--Icon-->
+    <color name="icon_one">#F4F4F4</color>
+
+    <!--Divider -->
+    <color name="divider_one">#424242</color>
+    <color name="divider_two">#afb0b1</color>
+</resources>

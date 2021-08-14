@@ -2,7 +2,10 @@ package com.example.instagramui.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val DodgerBlue = Color(0xFF1875FF)
+val LightDodgerBlue = Color(0xFF3CB4FF)
+val Java = Color(0xFF14C1B6)
+val FuchsiaBlue = Color(0xFF7D53C6)
+val Portage = Color(0xFFA57CED)
+
+val pinotNoir = listOf(Color(0xff4b6cb7), Color(0xFF182848))
