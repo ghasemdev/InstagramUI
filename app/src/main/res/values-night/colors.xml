@@ -8,7 +8,6 @@
 
     <!--Background-->
     <color name="background_screen">#121212</color>
-    <color name="background_navigation_bar">#33333D</color>
     <color name="background_card">#333333</color>
     <color name="background_search">#1d1d1d</color>
     <color name="background_popup">#1f1f1f</color>
