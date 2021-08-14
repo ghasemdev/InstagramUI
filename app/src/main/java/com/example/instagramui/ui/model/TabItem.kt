@@ -12,7 +12,39 @@ sealed class TabItem(
     var title: String,
     var screen: @Composable () -> Unit
 ) {
-    object Grid : TabItem(DRAWABLE.ic_grid, "Grid", { GridScreen() })
-    object IGTV : TabItem(DRAWABLE.ic_igtv, "IGTV", { IGTVScreen() })
-    object Mention : TabItem(DRAWABLE.ic_mention, "Mention", { MentionScreen() })
+    object Grid : TabItem(DRAWABLE.ic_grid, "Grid", {
+        GridScreen(
+            listOf(
+                DRAWABLE.p1,
+                DRAWABLE.p2,
+                DRAWABLE.p3,
+                DRAWABLE.p4,
+                DRAWABLE.p5,
+                DRAWABLE.p6,
+                DRAWABLE.p7,
+                DRAWABLE.p8,
+                DRAWABLE.p9,
+            )
+        )
+    })
+
+    object IGTV : TabItem(DRAWABLE.ic_igtv, "IGTV", {
+        IGTVScreen(
+            listOf(
+                DRAWABLE.p1,
+                DRAWABLE.p2,
+                DRAWABLE.p3,
+                DRAWABLE.p4,
+            )
+        )
+    })
+
+    object Mention : TabItem(DRAWABLE.ic_mention, "Mention", {
+        MentionScreen(
+            listOf(
+                DRAWABLE.p1,
+                DRAWABLE.p2,
+            )
+        )
+    })
 }
