@@ -2,6 +2,7 @@ package com.example.instagramui.ui.model
 
 import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import com.example.instagramui.ui.features.profile.GridScreen
 import com.example.instagramui.ui.features.profile.IGTVScreen
 import com.example.instagramui.ui.features.profile.MentionScreen
@@ -12,18 +13,19 @@ sealed class TabItem(
     var title: String,
     var screen: @Composable () -> Unit
 ) {
+    @ExperimentalComposeUiApi
     object Grid : TabItem(DRAWABLE.ic_grid, "Grid", {
         GridScreen(
             listOf(
-                DRAWABLE.p1,
-                DRAWABLE.p2,
-                DRAWABLE.p3,
-                DRAWABLE.p4,
-                DRAWABLE.p5,
-                DRAWABLE.p6,
-                DRAWABLE.p7,
-                DRAWABLE.p8,
-                DRAWABLE.p9,
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p1),
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p2),
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p3),
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p4),
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p5),
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p6),
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p7),
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p8),
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p9),
             )
         )
     })
@@ -31,19 +33,20 @@ sealed class TabItem(
     object IGTV : TabItem(DRAWABLE.ic_igtv, "IGTV", {
         IGTVScreen(
             listOf(
-                DRAWABLE.p1,
-                DRAWABLE.p2,
-                DRAWABLE.p3,
-                DRAWABLE.p4,
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p1),
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p2),
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p3),
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p4),
             )
         )
     })
 
+    @ExperimentalComposeUiApi
     object Mention : TabItem(DRAWABLE.ic_mention, "Mention", {
         MentionScreen(
             listOf(
-                DRAWABLE.p1,
-                DRAWABLE.p2,
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p1),
+                Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p2),
             )
         )
     })

@@ -24,5 +24,11 @@
         </item> <!-- Light NavigationBar API 27 (android 8.1) -->
 
         <item name="android:windowDisablePreview">true</item>
+        <item name="android:dialogTheme">@style/Theme.DialogFullScreen</item>
+    </style>
+
+    <style name="Theme.DialogFullScreen" parent="@style/ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
     </style>
 </resources>

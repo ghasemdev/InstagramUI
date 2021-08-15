@@ -10,9 +10,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -26,16 +26,22 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.instagramui.ui.common.CircularIndeterminateProgressBar
 import com.example.instagramui.ui.common.NoRippleTab
 import com.example.instagramui.ui.model.StoryHighlight
 import com.example.instagramui.ui.model.TabItem
 import com.example.instagramui.ui.theme.InstagramUITheme
 import com.example.instagramui.utils.DRAWABLE
 import com.example.instagramui.utils.asPainter
+import com.example.instagramui.utils.noRippleClickable
 import com.google.accompanist.pager.*
 import kotlinx.coroutines.launch
 import kpy.util.extension.ifNotNull
+import me.onebone.toolbar.CollapsingToolbarScaffold
+import me.onebone.toolbar.ScrollStrategy
+import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
 
+@ExperimentalComposeUiApi
 @ExperimentalPagerApi
 @Composable
 fun ProfileScreen() {
@@ -46,25 +52,42 @@ fun ProfileScreen() {
     )
     val pagerState = rememberPagerState(pageCount = tabs.size)
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        TopBar(name = "ghasem_79_")
-        Spacer(modifier = Modifier.height(8.dp))
-        ProfileSection()
-        Spacer(modifier = Modifier.height(25.dp))
-        ButtonSection(modifier = Modifier.fillMaxWidth())
-        Spacer(modifier = Modifier.height(25.dp))
-        HighlightSection(
-            highlights = listOf(
-                StoryHighlight(image = DRAWABLE.h1.asPainter(), title = "Projects"),
-                StoryHighlight(image = DRAWABLE.h2.asPainter(), title = "Art"),
-                StoryHighlight(image = DRAWABLE.h3.asPainter(), title = "My wOrDs"),
-                StoryHighlight(image = DRAWABLE.h4.asPainter(), title = "Coffee"),
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
-        Spacer(modifier = Modifier.height(10.dp))
-        TabView(tabs = tabs, pagerState = pagerState)
-        TabsContent(tabs = tabs, pagerState = pagerState)
+    TopBar(name = "ghasem_79_")
+    CollapsingToolbarScaffold(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 64.dp),
+        state = rememberCollapsingToolbarScaffoldState(),
+        scrollStrategy = ScrollStrategy.EnterAlways,
+        toolbar = {
+            Box(modifier = Modifier.pin())
+            Column(
+                modifier = Modifier.road(
+                    whenCollapsed = Alignment.BottomStart,
+                    whenExpanded = Alignment.BottomEnd
+                )
+            ) {
+                ProfileSection()
+                Spacer(modifier = Modifier.height(25.dp))
+                ButtonSection(modifier = Modifier.fillMaxWidth())
+                Spacer(modifier = Modifier.height(25.dp))
+                HighlightSection(
+                    highlights = listOf(
+                        StoryHighlight(image = DRAWABLE.h1.asPainter(), title = "Projects"),
+                        StoryHighlight(image = DRAWABLE.h2.asPainter(), title = "Art"),
+                        StoryHighlight(image = DRAWABLE.h3.asPainter(), title = "My wOrDs"),
+                        StoryHighlight(image = DRAWABLE.h4.asPainter(), title = "Coffee"),
+                    ),
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+            }
+        }
+    ) {
+        Column {
+            TabView(tabs = tabs, pagerState = pagerState)
+            TabsContent(tabs = tabs, pagerState = pagerState)
+        }
     }
 }
 
@@ -79,17 +102,15 @@ private fun TopBar(
             .fillMaxWidth()
             .height(56.dp)
     ) {
-        IconButton(
-            onClick = { Log.d("Profile", "TopBar: back") },
-            modifier = Modifier.weight(0.17F)
-        ) {
-            Icon(
-                painter = DRAWABLE.ic_back_arrow.asPainter(),
-                contentDescription = "Back",
-                tint = Color.Black,
-                modifier = Modifier.size(24.dp)
-            )
-        }
+        Icon(
+            painter = DRAWABLE.ic_back_arrow.asPainter(),
+            contentDescription = "Back",
+            tint = Color.Black,
+            modifier = Modifier
+                .noRippleClickable { Log.d("Profile", "TopBar: back") }
+                .weight(0.17F)
+                .size(24.dp)
+        )
         Text(
             text = name,
             overflow = TextOverflow.Ellipsis,
@@ -101,28 +122,24 @@ private fun TopBar(
                 .padding(start = 4.dp, end = 16.dp)
                 .weight(0.58F)
         )
-        IconButton(
-            onClick = { Log.d("Profile", "TopBar: bell") },
-            modifier = Modifier.weight(0.08F)
-        ) {
-            Icon(
-                painter = DRAWABLE.ic_bell.asPainter(),
-                contentDescription = "Bell",
-                tint = Color.Black,
-                modifier = Modifier.size(24.dp)
-            )
-        }
-        IconButton(
-            onClick = { Log.d("Profile", "TopBar: menu") },
-            modifier = Modifier.weight(0.17F)
-        ) {
-            Icon(
-                painter = DRAWABLE.ic_dotmenu.asPainter(),
-                contentDescription = "Menu",
-                tint = Color.Black,
-                modifier = Modifier.size(18.dp)
-            )
-        }
+        Icon(
+            painter = DRAWABLE.ic_bell.asPainter(),
+            contentDescription = "Bell",
+            tint = Color.Black,
+            modifier = Modifier
+                .noRippleClickable { Log.d("Profile", "TopBar: bell") }
+                .size(24.dp)
+                .weight(0.08F)
+        )
+        Icon(
+            painter = DRAWABLE.ic_dotmenu.asPainter(),
+            contentDescription = "Menu",
+            tint = Color.Black,
+            modifier = Modifier
+                .noRippleClickable { Log.d("Profile", "TopBar: menu") }
+                .weight(0.17F)
+                .size(18.dp)
+        )
     }
 }
 
@@ -138,7 +155,7 @@ private fun ProfileSection(modifier: Modifier = Modifier) {
             RoundImage(
                 image = DRAWABLE.avatar.asPainter(),
                 modifier = Modifier
-                    .size(100.dp)
+                    .size(90.dp)
                     .weight(3F)
             )
             Spacer(modifier = Modifier.width(16.dp))
@@ -203,13 +220,13 @@ private fun ProfileStat(
         Text(
             text = value,
             fontWeight = FontWeight.Bold,
-            fontSize = 20.sp,
+            fontSize = 18.sp,
             color = Color.Black
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = title,
-            fontWeight = FontWeight.Bold,
+            fontSize = 14.sp,
             color = Color.Black
         )
     }
@@ -239,20 +256,22 @@ private fun ProfileDescription(
         Text(
             text = description,
             color = Color.Black,
+            fontSize = 14.sp,
             letterSpacing = letterSpacing,
-            lineHeight = lineHeight,
-            textAlign = TextAlign.Justify
+            lineHeight = lineHeight
         )
         Text(
             text = "See Translation",
             color = Color.Black,
             fontWeight = FontWeight.Bold,
+            fontSize = 14.sp,
             letterSpacing = letterSpacing,
             lineHeight = lineHeight
         )
         if (followedBy.isNotEmpty()) {
             Text(
                 color = Color.Black,
+                fontSize = 14.sp,
                 text = buildAnnotatedString {
                     val boldStyle = SpanStyle(
                         color = Color.Black,
@@ -282,7 +301,9 @@ private fun ProfileDescription(
 
 @Composable
 private fun ButtonSection(modifier: Modifier = Modifier) {
+    var isLoading by remember { mutableStateOf(false) }
     val height = 35.dp
+
     Row(
         horizontalArrangement = Arrangement.Center,
         modifier = modifier.padding(horizontal = 16.dp)
@@ -294,34 +315,41 @@ private fun ButtonSection(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .weight(1F)
                 .height(height = height)
-        )
+        ) {}
         ActionButton(
             text = "Message",
             modifier = Modifier
                 .padding(start = 8.dp)
                 .weight(1F)
                 .height(height = height)
-        )
+        ) {}
         ActionButton(
             icon = Icons.Default.KeyboardArrowDown,
             modifier = Modifier
                 .padding(start = 8.dp)
-                .height(height = height)
-        )
+                .height(height = height),
+            isLoading = isLoading
+        ) {
+            isLoading = !isLoading
+        }
     }
 }
+
 
 @Composable
 private fun ActionButton(
     modifier: Modifier = Modifier,
     text: String? = null,
     textColor: Color = Color.Black,
-    icon: ImageVector? = null
+    icon: ImageVector? = null,
+    isLoading: Boolean = false,
+    onClick: () -> Unit
 ) {
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
+            .noRippleClickable { onClick() }
             .border(
                 width = 1.dp,
                 color = Color.LightGray,
@@ -329,19 +357,29 @@ private fun ActionButton(
             )
             .padding(6.dp)
     ) {
-        text.ifNotNull {
-            Text(
-                text = it,
-                color = textColor,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 14.sp
-            )
-        }
-        icon.ifNotNull {
-            Icon(
-                imageVector = it,
-                contentDescription = null,
-                tint = Color.Black
+        if (!isLoading) {
+            text.ifNotNull {
+                Text(
+                    text = it,
+                    color = textColor,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 14.sp,
+                )
+            }
+            icon.ifNotNull {
+                Icon(
+                    imageVector = it,
+                    contentDescription = null,
+                    tint = Color.Black,
+                )
+            }
+        } else {
+            CircularIndeterminateProgressBar(
+                modifier = Modifier
+                    .size(23.dp)
+                    .padding(2.dp),
+                color = Color.Black,
+                strokeWidth = 2.dp
             )
         }
     }
@@ -370,6 +408,7 @@ private fun HighlightSection(
                 Text(
                     text = highlights[it].title,
                     color = Color.Black,
+                    fontSize = 12.sp,
                     overflow = TextOverflow.Ellipsis,
                     textAlign = TextAlign.Center
                 )
@@ -430,6 +469,7 @@ private fun TabsContent(tabs: List<TabItem>, pagerState: PagerState) {
     }
 }
 
+@ExperimentalComposeUiApi
 @ExperimentalPagerApi
 @Preview(showBackground = true)
 @Composable

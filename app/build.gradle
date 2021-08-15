@@ -79,6 +79,8 @@ dependencies {
     implementation "com.google.accompanist:accompanist-navigation-material:$accompanist_version"
     // Permissions
     implementation "com.google.accompanist:accompanist-permissions:$accompanist_version"
+    // Collapsing Toolbar
+    implementation "me.onebone:toolbar-compose:2.1.2"
 
     // Compose
     implementation "androidx.compose.ui:ui:$compose_version"
