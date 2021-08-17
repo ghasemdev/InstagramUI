@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import com.example.instagramui.ui.features.profile.GridScreen
 import com.example.instagramui.ui.features.profile.IGTVScreen
-import com.example.instagramui.ui.features.profile.MentionScreen
 import com.example.instagramui.utils.DRAWABLE
 
 sealed class TabItem(
@@ -43,7 +42,7 @@ sealed class TabItem(
 
     @ExperimentalComposeUiApi
     object Mention : TabItem(DRAWABLE.ic_mention, "Mention", {
-        MentionScreen(
+        GridScreen(
             listOf(
                 Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p1),
                 Post(userImage = DRAWABLE.avatar, userId = "ghasem_79_", post = DRAWABLE.p2),

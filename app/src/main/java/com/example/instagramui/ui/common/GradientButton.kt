@@ -18,11 +18,11 @@ import androidx.compose.ui.unit.dp
 import com.example.instagramui.ui.theme.pinotNoir
 
 @Composable
-fun GradientButton(
+inline fun GradientButton(
     text: String,
     textColor: Color,
     gradient: Brush,
-    onclick: () -> Unit
+    crossinline onclick: () -> Unit
 ) {
     Button(
         colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),

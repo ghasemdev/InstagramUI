@@ -16,6 +16,7 @@
         <item name="android:statusBarColor">#C6C6C6</item>
 
         <item name="android:windowDisablePreview">true</item>
+        <item name="android:dialogTheme">@style/Theme.DialogFullScreen</item>
     </style>
 
     <!-- Bottom Sheet Dialog Theme-->
@@ -27,4 +28,10 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <!-- Dialog Theme -->
+    <style name="Theme.DialogFullScreen" parent="@style/ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+    </style>
 </resources>

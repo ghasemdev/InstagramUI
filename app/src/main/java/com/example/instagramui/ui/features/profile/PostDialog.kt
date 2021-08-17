@@ -20,12 +20,15 @@ import androidx.compose.ui.window.DialogProperties
 import com.example.instagramui.ui.model.Post
 import com.example.instagramui.utils.DRAWABLE
 import com.example.instagramui.utils.asPainter
+import com.example.instagramui.utils.noRippleClickable
 
 @ExperimentalComposeUiApi
 @Composable
 fun PostDialog(
     post: Post,
     properties: DialogProperties = DialogProperties(),
+    onSend: () -> Unit,
+    onLike: () -> Unit,
     onDismissRequest: () -> Unit
 ) {
     Dialog(
@@ -76,12 +79,20 @@ fun PostDialog(
                     Icon(
                         painter = DRAWABLE.ic_heart.asPainter(),
                         contentDescription = null,
-                        modifier = Modifier.size(24.dp)
+                        modifier = Modifier
+                            .size(24.dp)
+                            .noRippleClickable {
+                                onLike()
+                            }
                     )
                     Icon(
                         painter = DRAWABLE.ic_send.asPainter(),
                         contentDescription = null,
-                        modifier = Modifier.size(24.dp)
+                        modifier = Modifier
+                            .size(24.dp)
+                            .noRippleClickable {
+                                onSend()
+                            }
                     )
                 }
             }

@@ -1,5 +1,6 @@
 package com.example.instagramui.ui.features.profile
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -24,6 +25,7 @@ import com.example.instagramui.utils.asPainter
 fun GridScreen(posts: List<Post> = emptyList()) {
     val openDialog = remember { mutableStateOf(false) }
     var post by remember { mutableStateOf(Post()) }
+    var whenDialogShow = 0L
 
     LazyColumn(Modifier.fillMaxSize()) {
         items(posts.windowed(3, 3, true)) { sublist ->
@@ -43,12 +45,15 @@ fun GridScreen(posts: List<Post> = emptyList()) {
                             .pointerInput(Unit) {
                                 detectTapGestures(
                                     onLongPress = {
+                                        whenDialogShow = System.currentTimeMillis()
                                         openDialog.value = true
                                         post = item
                                     },
                                     onPress = {
                                         awaitRelease()
-                                        openDialog.value = false
+                                        if (System.currentTimeMillis() - whenDialogShow < 500) {
+                                            openDialog.value = false
+                                        }
                                     }
                                 )
                             }
@@ -59,7 +64,11 @@ fun GridScreen(posts: List<Post> = emptyList()) {
     }
 
     if (openDialog.value) {
-        PostDialog(post = post) {
+        PostDialog(
+            post = post,
+            onSend = { Log.d("Post", "onSend") },
+            onLike = { Log.d("Post", "onLike") }
+        ) {
             openDialog.value = false
         }
     }

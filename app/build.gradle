@@ -52,6 +52,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.github.jakode2020:Kpy:0.6.0'
+    implementation 'jp.wasabeef:blurry:4.0.0'
 
     // Lifecycles only (without ViewModel or LiveData)
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
@@ -103,6 +104,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07'
     // Integration with observables
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     // UI Tests
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
