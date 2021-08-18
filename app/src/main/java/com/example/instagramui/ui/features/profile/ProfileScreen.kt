@@ -1,8 +1,10 @@
 package com.example.instagramui.ui.features.profile
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
@@ -105,7 +107,7 @@ private fun TopBar(
         Icon(
             painter = DRAWABLE.ic_back_arrow.asPainter(),
             contentDescription = "Back",
-            tint = Color.Black,
+            tint = MaterialTheme.colors.onBackground,
             modifier = Modifier
                 .noRippleClickable { Log.d("Profile", "TopBar: back") }
                 .weight(0.17F)
@@ -116,7 +118,7 @@ private fun TopBar(
             overflow = TextOverflow.Ellipsis,
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
-            color = Color.Black,
+            color = MaterialTheme.colors.onBackground,
             maxLines = 1,
             modifier = Modifier
                 .padding(start = 4.dp, end = 16.dp)
@@ -125,7 +127,7 @@ private fun TopBar(
         Icon(
             painter = DRAWABLE.ic_bell.asPainter(),
             contentDescription = "Bell",
-            tint = Color.Black,
+            tint = MaterialTheme.colors.onBackground,
             modifier = Modifier
                 .noRippleClickable { Log.d("Profile", "TopBar: bell") }
                 .size(24.dp)
@@ -134,7 +136,7 @@ private fun TopBar(
         Icon(
             painter = DRAWABLE.ic_dotmenu.asPainter(),
             contentDescription = "Menu",
-            tint = Color.Black,
+            tint = MaterialTheme.colors.onBackground,
             modifier = Modifier
                 .noRippleClickable { Log.d("Profile", "TopBar: menu") }
                 .weight(0.17F)
@@ -185,7 +187,7 @@ fun RoundImage(
             .aspectRatio(1F, matchHeightConstraintsFirst = true)
             .border(
                 width = 1.dp,
-                color = Color.LightGray,
+                color = if (isSystemInDarkTheme()) Color.DarkGray else Color.LightGray,
                 shape = CircleShape
             )
             .padding(3.dp)
@@ -221,13 +223,13 @@ private fun ProfileStat(
             text = value,
             fontWeight = FontWeight.Bold,
             fontSize = 18.sp,
-            color = Color.Black
+            color = MaterialTheme.colors.onBackground
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = title,
             fontSize = 14.sp,
-            color = Color.Black
+            color = MaterialTheme.colors.onBackground
         )
     }
 }
@@ -248,21 +250,21 @@ private fun ProfileDescription(
     ) {
         Text(
             text = displayName,
-            color = Color.Black,
+            color = MaterialTheme.colors.onBackground,
             fontWeight = FontWeight.Bold,
             letterSpacing = letterSpacing,
             lineHeight = lineHeight
         )
         Text(
             text = description,
-            color = Color.Black,
+            color = MaterialTheme.colors.onBackground,
             fontSize = 14.sp,
             letterSpacing = letterSpacing,
             lineHeight = lineHeight
         )
         Text(
             text = "See Translation",
-            color = Color.Black,
+            color = MaterialTheme.colors.onBackground,
             fontWeight = FontWeight.Bold,
             fontSize = 14.sp,
             letterSpacing = letterSpacing,
@@ -270,11 +272,11 @@ private fun ProfileDescription(
         )
         if (followedBy.isNotEmpty()) {
             Text(
-                color = Color.Black,
+                color = MaterialTheme.colors.onBackground,
                 fontSize = 14.sp,
                 text = buildAnnotatedString {
                     val boldStyle = SpanStyle(
-                        color = Color.Black,
+                        color = MaterialTheme.colors.onBackground,
                         fontWeight = FontWeight.Bold,
                     )
                     append("Followed by ")
@@ -340,7 +342,7 @@ private fun ButtonSection(modifier: Modifier = Modifier) {
 private fun ActionButton(
     modifier: Modifier = Modifier,
     text: String? = null,
-    textColor: Color = Color.Black,
+    textColor: Color = MaterialTheme.colors.onBackground,
     icon: ImageVector? = null,
     isLoading: Boolean = false,
     onClick: () -> Unit
@@ -352,7 +354,7 @@ private fun ActionButton(
             .noRippleClickable { onClick() }
             .border(
                 width = 1.dp,
-                color = Color.LightGray,
+                color = if (isSystemInDarkTheme()) Color.DarkGray else Color.LightGray,
                 shape = RoundedCornerShape(5.dp)
             )
             .padding(6.dp)
@@ -370,7 +372,7 @@ private fun ActionButton(
                 Icon(
                     imageVector = it,
                     contentDescription = null,
-                    tint = Color.Black,
+                    tint = MaterialTheme.colors.onBackground,
                 )
             }
         } else {
@@ -378,7 +380,7 @@ private fun ActionButton(
                 modifier = Modifier
                     .size(23.dp)
                     .padding(2.dp),
-                color = Color.Black,
+                color = MaterialTheme.colors.onBackground,
                 strokeWidth = 2.dp
             )
         }
@@ -407,7 +409,7 @@ private fun HighlightSection(
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(
                     text = highlights[it].title,
-                    color = Color.Black,
+                    color = MaterialTheme.colors.onBackground,
                     fontSize = 12.sp,
                     overflow = TextOverflow.Ellipsis,
                     textAlign = TextAlign.Center
@@ -472,6 +474,7 @@ private fun TabsContent(tabs: List<TabItem>, pagerState: PagerState) {
 @ExperimentalComposeUiApi
 @ExperimentalPagerApi
 @Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 private fun DefaultPreview() {
     InstagramUITheme {

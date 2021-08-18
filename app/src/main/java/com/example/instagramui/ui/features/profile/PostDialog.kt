@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -58,7 +59,7 @@ fun PostDialog(
                         modifier = Modifier.padding(start = 8.dp, bottom = 4.dp),
                         text = post.userId,
                         fontSize = 14.sp,
-                        color = Color.Black,
+                        color = MaterialTheme.colors.onBackground,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )

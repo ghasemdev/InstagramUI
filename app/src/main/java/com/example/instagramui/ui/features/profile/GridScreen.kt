@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -40,7 +41,7 @@ fun GridScreen(posts: List<Post> = emptyList()) {
                             .aspectRatio(1F)
                             .border(
                                 width = 1.dp,
-                                color = Color.White
+                                color = if (isSystemInDarkTheme()) Color.DarkGray else Color.White
                             )
                             .pointerInput(Unit) {
                                 detectTapGestures(
