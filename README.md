@@ -5,8 +5,8 @@ Create an Instagram profile page using Jetpack Compose
 ### Preview
 
 <div align='center'>
-    <img src="" alt="instagramUiLight"/>
-    <img src="" alt="instagramUiDark"/>
+    <img src="https://github.com/jakode2020/InstagramUI/blob/master/gif/instagramUiLight.gif" alt="instagramUiLight"/>
+    <img src="https://github.com/jakode2020/InstagramUI/blob/master/gif/instagramUiDark.gif" alt="instagramUiDark"/>
 </div>
 
 ### Used libraries
