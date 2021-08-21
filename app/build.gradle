@@ -55,6 +55,8 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:2.1.0"
 
     implementation "com.github.jakode2020:Kpy:0.7.0"
+    implementation "jp.wasabeef:blurry:4.0.0"
+    implementation "com.flaviofaria:kenburnsview:1.0.7"
 
     // View Binding Delegate
     implementation 'com.github.hoc081098:ViewBindingDelegate:1.2.0'

@@ -6,5 +6,3 @@ typealias DRAWABLE = R.drawable
 typealias COLOR = R.color
 typealias STRING = R.string
 typealias LAYOUT = R.layout
-//typealias FONT = R.font
-//typealias RAW = R.raw

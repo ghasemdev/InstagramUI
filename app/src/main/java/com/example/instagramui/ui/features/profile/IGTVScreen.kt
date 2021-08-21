@@ -11,7 +11,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.example.instagramui.ui.model.Post
-import com.example.instagramui.utils.asPainter
+import com.example.instagramui.compose.utils.asPainter
 import kpy.util.extension.isEven
 
 @Composable

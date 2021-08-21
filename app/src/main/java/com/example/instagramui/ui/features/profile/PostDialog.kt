@@ -11,17 +11,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.example.instagramui.compose.utils.asPainter
+import com.example.instagramui.compose.utils.noRippleClickable
 import com.example.instagramui.ui.model.Post
 import com.example.instagramui.utils.DRAWABLE
-import com.example.instagramui.utils.asPainter
-import com.example.instagramui.utils.noRippleClickable
 
 @ExperimentalComposeUiApi
 @Composable
