@@ -60,7 +60,7 @@ fun ProfileScreen() {
             .fillMaxWidth()
             .padding(top = 64.dp),
         state = rememberCollapsingToolbarScaffoldState(),
-        scrollStrategy = ScrollStrategy.EnterAlways,
+        scrollStrategy = ScrollStrategy.EnterAlwaysCollapsed,
         toolbar = {
             Box(modifier = Modifier.pin())
             Column(
